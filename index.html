@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Restaurant Billing</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="navbar">
+
+<h1>RESTAURANT BILLING</h1>
+
+<div class="live-box">
+
+<span class="live-dot"></span>
+
+LIVE BILLING
+
+</div>
+
+</header>
+
+<!-- ================= ANALYTICS ================= -->
+
+<section class="analytics">
+
+<div class="analytics-card">
+
+<h3 id="todayOrders">0</h3>
+
+<p>Today's Bills</p>
+
+</div>
+
+<div class="analytics-card">
+
+<h3 id="todaySales">₹0</h3>
+
+<p>Today's Sales</p>
+
+</div>
+
+</section>
+
+<!-- ================= SEARCH ================= -->
+
+<section class="search-section">
+
+<input
+type="tel"
+id="searchPhone"
+placeholder="Search Customer Number">
+
+</section>
+
+<!-- ================= BILL LIST ================= -->
+
+<main>
+
+<div
+id="billContainer"
+class="bill-container">
+
+<!-- Bills Here -->
+
+</div>
+
+<div
+id="emptyBills"
+class="empty-bills">
+
+<h2>No Bills Available</h2>
+
+<p>Waiting for customer orders...</p>
+
+</div>
+
+</main>
+
+<!-- ================= BILL POPUP ================= -->
+
+<div
+id="billPopup"
+class="bill-popup">
+
+<div class="bill-box">
+
+<span
+id="closeBill"
+class="close-bill">×</span>
+
+<div id="billContent">
+
+<div class="bill-header">
+
+<img
+src="logo.png"
+id="billLogo"
+alt="Restaurant Logo">
+
+<h2>YOUR RESTAURANT</h2>
+
+<p>Premium Dining Experience</p>
+
+</div>
+
+<div id="billDetails"></div>
+
+</div>
+
+<button
+id="printBill"
+class="bill-print-btn">
+
+🖨 Print Bill
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= FIREBASE ================= -->
+
+<script type="module" src="firebase.js"></script>
+
+<!-- ================= SCRIPT ================= -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
