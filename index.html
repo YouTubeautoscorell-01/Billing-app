@@ -1,146 +1,76 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Restaurant Billing</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3b0a16">
+  <title>Restaurant Billing Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="firebase.js"></script>
+  <script defer src="script.js"></script>
 </head>
-
 <body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">₹</div>
+      <div>
+        <h1>Billing Dashboard</h1>
+        <p>Restaurant Management</p>
+      </div>
+    </div>
+    <div class="live-indicator"><span></span> Live Orders</div>
+  </header>
 
-<!-- ================= HEADER ================= -->
+  <main class="container">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">OWNER / BILLING PANEL</p>
+        <h2>Orders &amp; Bills</h2>
+        <p class="muted">View orders, calculate bills and print receipts.</p>
+      </div>
+      <button id="refreshBtn" class="btn btn-outline" type="button">Refresh</button>
+    </section>
 
-<header class="navbar">
+    <section class="stats">
+      <article class="stat-card">
+        <span class="stat-label">Active Orders</span>
+        <strong id="activeCount">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Order Value</span>
+        <strong id="activeValue">₹0.00</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Total Items</span>
+        <strong id="itemCount">0</strong>
+      </article>
+    </section>
 
-<h1>RESTAURANT BILLING</h1>
+    <section class="orders-section">
+      <div class="section-heading">
+        <div>
+          <h2>Current Orders</h2>
+          <p class="muted">Each order is shown separately, even for the same mobile number.</p>
+        </div>
+        <span id="connectionStatus" class="status-pill">Connecting…</span>
+      </div>
 
-<div class="live-box">
+      <div id="message" class="message" role="status">
+        Connecting to Firebase…
+      </div>
 
-<span class="live-dot"></span>
+      <div id="ordersList" class="orders-grid"></div>
+    </section>
+  </main>
 
-LIVE BILLING
+  <footer>
+    <p>Restaurant Billing Dashboard</p>
+    <p>Orders update automatically when Firebase is connected.</p>
+  </footer>
 
-</div>
-
-</header>
-
-<!-- ================= ANALYTICS ================= -->
-
-<section class="analytics">
-
-<div class="analytics-card">
-
-<h3 id="todayOrders">0</h3>
-
-<p>Today's Bills</p>
-
-</div>
-
-<div class="analytics-card">
-
-<h3 id="todaySales">₹0</h3>
-
-<p>Today's Sales</p>
-
-</div>
-
-</section>
-
-<!-- ================= SEARCH ================= -->
-
-<section class="search-section">
-
-<input
-type="tel"
-id="searchPhone"
-placeholder="Search Customer Number">
-
-</section>
-
-<!-- ================= BILL LIST ================= -->
-
-<main>
-
-<div
-id="billContainer"
-class="bill-container">
-
-<!-- Bills Here -->
-
-</div>
-
-<div
-id="emptyBills"
-class="empty-bills">
-
-<h2>No Bills Available</h2>
-
-<p>Waiting for customer orders...</p>
-
-</div>
-
-</main>
-
-<!-- ================= BILL POPUP ================= -->
-
-<div
-id="billPopup"
-class="bill-popup">
-
-<div class="bill-box">
-
-<span
-id="closeBill"
-class="close-bill">×</span>
-
-<div id="billContent">
-
-<div class="bill-header">
-
-<img
-src="logo.png"
-id="billLogo"
-alt="Restaurant Logo">
-
-<h2>YOUR RESTAURANT</h2>
-
-<p>Premium Dining Experience</p>
-
-</div>
-
-<div id="billDetails"></div>
-
-</div>
-
-<button
-id="printBill"
-class="bill-print-btn">
-
-🖨 Print Bill
-
-</button>
-
-</div>
-
-</div>
-
-<!-- ================= FIREBASE ================= -->
-
-<script type="module" src="firebase.js"></script>
-
-<!-- ================= SCRIPT ================= -->
-
-<script src="script.js"></script>
-
+  <div id="printArea" class="print-area"></div>
 </body>
 </html>
